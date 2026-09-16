@@ -1,0 +1,2 @@
+be5e7ffd044fdc3256f2864474a284e3663bb1e9a3250970df6ed17884566e2d *TCL 508N 2a降级flash_all_spd_dump.zip
+fdce362492faa4476d37ad02a0d05a66b356eb6fe5c9720ac5466f534ff0e356 *TCL508N解锁BL&Root.zip
