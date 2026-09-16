@@ -7,6 +7,7 @@
 ---
 
 ## 提示
+# LOOK HERE!!!!!! WARNING !!!!!!! LOOK HERE
 ------------------------------------------------------------
 ###  LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!
 **第一次刷入后会出现一个非常哈人的页面，大概意思是你的数据炸了问你要不要重置，直接点重置即可。**
