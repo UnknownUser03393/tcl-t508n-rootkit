@@ -15,6 +15,33 @@
 ###  LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!LOOK HERE!!!
 ------------------------------------------------------------
 
+> 补充说明（已实机验证）：那个页面是 `init_user0_failed`。
+> 原因是 2024 版 TEE（`trustos`/`sml`）与 2025 版不是同一代，
+> 既有 `/data` 的 FBE 密钥解不开，Recovery 于是建议 wipe。
+> **此时刷回 2025 原版 boot chain 可保住数据；点重置则清空 userdata。**
+> 两条路都能让设备恢复正常，不会变砖。
+
+---
+
+## 🔓 实测结论：2024 boot chain 可持久解 BL 锁
+
+**[`bootchain-2024-unlocked/`](bootchain-2024-unlocked/)** —— 实机验证过、能把
+`ro.boot.flash.locked` 从 `1` 变成 `0` 并**断电重启后保持**的 boot chain。
+
+```
+刷入 uboot_a + trustos_a + sml_a + teecfg_a (2024 版)  →  双清一次
+        ↓
+ro.boot.flash.locked         0
+ro.boot.vbmeta.device_state  unlocked
+ro.boot.verifiedbootstate    orange
+```
+
+**关键：`miscdata+0x2000` 的锁令牌前后完全没变** —— 同一份令牌，
+2025 boot chain 判为 `locked`，2024 判为 `unlocked`。
+锁判据在 boot chain 里，不在存储数据里。详见该目录说明。
+
+---
+
 ## 包 1 — 解锁 BL & Root
 
 | | |
